@@ -9,8 +9,12 @@ const createGrid = (columns, rows) => {
             const divColumn = document.querySelector(`.column-${i}`)
             const div = document.createElement('div');
             div.style.cssText = "height: 50px; width: 50px; border: 1px solid black;"
-            div.classList.add("cell")
+            div.classList.add(`cell-${i}-${j}`)
             divColumn.appendChild(div);
+            const cell = document.querySelector(`.cell-${i}-${j}`)
+            cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = "black"})
         }
     }
 }
+
+createGrid(16, 16)

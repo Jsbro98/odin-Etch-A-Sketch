@@ -1,0 +1,29 @@
+.input-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 55px;
+}
+
+
+.reset-button:hover {background: lightgrey; color: gray;}
+.reset-button {
+    border-radius: 20%;
+    height: 50px; width: 80px; 
+    border: black solid 3px; 
+    background: grey; 
+    color: white;
+    align-self: center;
+}
+
+.user-input {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+.grid-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

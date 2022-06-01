@@ -1,10 +1,11 @@
-const body = document.body;
 const  gridContainer = document.createElement('div');
 gridContainer.classList.add("grid-container");
+const gridWrapper = document.querySelector('.grid-wrapper');
+const inputButtonContainer = document.querySelector('.input-button-container');
 
 
 const createGrid = (columns, rows, color) => {    
-    body.appendChild(gridContainer)
+    gridWrapper.appendChild(gridContainer)
     for (i = 0; i < columns; i++) {
         const div = document.createElement('div');
         div.style.cssText = "height: 50px; width: 50px; display: inline-block;";
@@ -34,10 +35,10 @@ const resetAll = (e) => {
 
 
 const resetButton = document.createElement('button');
+resetButton.classList.add("reset-button");
 resetButton.textContent = "Reset";
-resetButton.style.cssText = "height: 50px; width: 80px; border: pink solid 3px; background: salmon; color: white;";
 resetButton.addEventListener('click', resetAll);
-body.appendChild(resetButton);
+inputButtonContainer.appendChild(resetButton);
 
 const readAndCreateFromUserInput = () => {
 let rowValue;

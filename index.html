@@ -9,13 +9,16 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <label class="row-label" for="row">Number of rows:</label>
-        <input type="number" class="rows-input" name="row">
-    <br>
-    <label class="column-label" for="column">Number of columns:</label>
-        <input type="number" class="columns-input" name="column">
-    <label class="color-label" for="color">Pick a color:</label>
-        <input type="color" class="color-input" name="color">
-    <input type="submit" value="Create Grid" id="submit">
+    <div class="input-button-container">
+        <div class="user-input">
+        <label class="row-label" for="row">Number of rows:</label>
+            <input type="number" class="rows-input" name="row">
+        <label class="column-label" for="column">Number of columns:</label>
+            <input type="number" class="columns-input" name="column">
+        <label class="color-label" for="color">Pick a color:</label>
+            <input type="color" class="color-input" name="color">
+        <input type="submit" value="Create Grid" id="submit">
+    </div>
+    <div class="grid-wrapper"></div>
 </body>
 </html>

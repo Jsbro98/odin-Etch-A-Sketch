@@ -1,3 +1,7 @@
+html {
+    background: rgb(222, 220, 220);
+}
+
 .input-button-container {
     display: block;
     justify-content: space-around;

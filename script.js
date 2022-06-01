@@ -17,7 +17,7 @@ const createGrid = (columns, rows, color) => {
         for (j = 0; j < rows; j++) {
             const divColumn = document.querySelector(`#column-${i}`);
             const div = document.createElement('div');
-            div.style.cssText = "height: 50px; width: 50px; border: 1px solid black;";
+            div.style.cssText = "height: 50px; width: 50px; background: white;";
             div.setAttribute('id', `cell-${i}-${j}`);
             divColumn.appendChild(div);
             const cell = document.querySelector(`#cell-${i}-${j}`);

@@ -3,7 +3,7 @@ const  gridContainer = document.createElement('div');
 gridContainer.classList.add("grid-container");
 
 
-const createGrid = (columns, rows) => {    
+const createGrid = (columns, rows, color) => {    
     body.appendChild(gridContainer)
     for (i = 0; i < columns; i++) {
         const div = document.createElement('div');
@@ -17,7 +17,7 @@ const createGrid = (columns, rows) => {
             div.setAttribute('id', `cell-${i}-${j}`);
             divColumn.appendChild(div);
             const cell = document.querySelector(`#cell-${i}-${j}`);
-            cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = "black"})
+            cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = `${color}`});
         }
     }
 }
@@ -42,19 +42,22 @@ body.appendChild(resetButton);
 const readAndCreateFromUserInput = () => {
 let rowValue;
 let columnValue;
+let colorValue;
 
     (function readUserInput() {
         const rowInput = document.querySelector('.rows-input');
         const columnInput = document.querySelector('.columns-input');
-
+        const colorInput = document.querySelector('.color-input');
+        
+        colorValue = colorInput.value;
         rowValue = rowInput.value;
         columnValue = columnInput.value;
-        return rowValue, columnValue
+        return rowValue, columnValue, colorValue;
     }) ();
 
     resetAll();
 
-    createGrid(columnValue, rowValue);
+    createGrid(columnValue, rowValue, colorValue);
 }
 
 const submit = document.getElementById("submit");

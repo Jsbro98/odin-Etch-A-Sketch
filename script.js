@@ -38,3 +38,24 @@ resetButton.textContent = "Reset";
 resetButton.style.cssText = "height: 50px; width: 80px; border: pink solid 3px; background: salmon; color: white;";
 resetButton.addEventListener('click', resetAll);
 body.appendChild(resetButton);
+
+const readAndCreateFromUserInput = () => {
+let rowValue;
+let columnValue;
+
+    (function readUserInput() {
+        const rowInput = document.querySelector('.rows-input');
+        const columnInput = document.querySelector('.columns-input');
+
+        rowValue = rowInput.value;
+        columnValue = columnInput.value;
+        return rowValue, columnValue
+    }) ();
+
+    resetAll();
+
+    createGrid(columnValue, rowValue);
+}
+
+const submit = document.getElementById("submit");
+submit.addEventListener('click', readAndCreateFromUserInput);

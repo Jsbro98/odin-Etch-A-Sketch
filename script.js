@@ -6,6 +6,9 @@ const inputButtonContainer = document.querySelector('.input-button-container');
 
 const createGrid = (columns, rows, color) => {    
     gridWrapper.appendChild(gridContainer)
+    if(columns > 50 || rows > 50) {
+        return alert("Error, please choose a smaller grid")
+    }
     for (i = 0; i < columns; i++) {
         const div = document.createElement('div');
         div.style.cssText = "height: 50px; width: 50px; display: inline-block;";

@@ -1,29 +1,55 @@
 .input-button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+    justify-content: space-around;
     margin-bottom: 55px;
 }
 
 
-.reset-button:hover {background: lightgrey; color: gray;}
+.reset-button:hover {background: rgb(255, 84, 84); color: rgb(53, 53, 53);}
 .reset-button {
+    display: inline-block;
     border-radius: 20%;
-    height: 50px; width: 80px; 
-    border: black solid 3px; 
-    background: grey; 
+    height: 75px; width: 125px; 
+    border: maroon solid 3px; 
+    background: red; 
     color: white;
-    align-self: center;
+    font-size: 25px;
+    margin-top: 15px;
 }
 
 .user-input {
     display: flex;
     flex-flow: column wrap;
     gap: 10px;
+    width: 20vw;
+    background: rgba(255, 190, 68, 0.639);
+    border: black solid 4px;
 }
 
 .grid-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#submit:hover {background: rgb(189, 0, 0);}
+#submit {
+height: 55px;
+background: darkred;
+font-size: xx-large;
+font-weight: bold;
+color: white;
+}
+
+.row-label, .color-label, .column-label {
+font-weight: bold;
+font-size: 25px;
+}
+
+.columns-input, .rows-input {
+    width: 11vw; height: 35px;
+    font-size: 25px;
+}
+
+h1 {
+    text-align: center;
 }

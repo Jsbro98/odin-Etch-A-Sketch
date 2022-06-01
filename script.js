@@ -6,7 +6,7 @@ const inputButtonContainer = document.querySelector('.input-button-container');
 
 const createGrid = (columns, rows, color) => {    
     gridWrapper.appendChild(gridContainer)
-    if(columns > 50 || rows > 50) {
+    if(columns > 36 || rows > 50) {
         return alert("Error, please choose a smaller grid")
     }
     for (i = 0; i < columns; i++) {

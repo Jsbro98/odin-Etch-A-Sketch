@@ -8,22 +8,33 @@ const createGrid = (columns, rows) => {
     for (i = 0; i < columns; i++) {
         const div = document.createElement('div');
         div.style.cssText = "height: 50px; width: 50px; display: inline-block;";
-        div.classList.add(`column-${i}`)
+        div.setAttribute('id', `column-${i}`);
         gridContainer.appendChild(div);
         for (j = 0; j < rows; j++) {
-            const divColumn = document.querySelector(`.column-${i}`)
+            const divColumn = document.querySelector(`#column-${i}`);
             const div = document.createElement('div');
-            div.style.cssText = "height: 50px; width: 50px; border: 1px solid black;"
-            div.classList.add(`cell-${i}-${j}`)
+            div.style.cssText = "height: 50px; width: 50px; border: 1px solid black;";
+            div.setAttribute('id', `cell-${i}-${j}`);
             divColumn.appendChild(div);
-            const cell = document.querySelector(`.cell-${i}-${j}`)
+            const cell = document.querySelector(`#cell-${i}-${j}`);
             cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = "black"})
         }
     }
 }
+const resetAll = (e) => {
+    const columns = document.querySelectorAll('[id*="column"]');
+    const cells = document.querySelectorAll('[id*="cell"]');
+    cells.forEach(index => index.removeAttribute('id'));
+    cells.forEach(index => index.remove());
+    columns.forEach(index => index.removeAttribute('id'));
+    columns.forEach(index => index.remove());
+    gridContainer.remove();
+
+}
+
 
 const resetButton = document.createElement('button');
 resetButton.textContent = "Reset";
 resetButton.style.cssText = "height: 50px; width: 80px; border: pink solid 3px; background: salmon; color: white;";
-resetButton.addEventListener('click', () => {gridContainer.remove()})
-body.appendChild(resetButton)
+resetButton.addEventListener('click', resetAll);
+body.appendChild(resetButton);

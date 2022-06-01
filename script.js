@@ -1,6 +1,11 @@
-const createGrid = (columns, rows) => {
+const body = document.body;
+const  gridContainer = document.createElement('div');
+gridContainer.classList.add("grid-container");
+
+
+const createGrid = (columns, rows) => {    
+    body.appendChild(gridContainer)
     for (i = 0; i < columns; i++) {
-        const gridContainer = document.querySelector('.grid-container');
         const div = document.createElement('div');
         div.style.cssText = "height: 50px; width: 50px; display: inline-block;";
         div.classList.add(`column-${i}`)
@@ -17,4 +22,8 @@ const createGrid = (columns, rows) => {
     }
 }
 
-createGrid(16, 16)
+const resetButton = document.createElement('button');
+resetButton.textContent = "Reset";
+resetButton.style.cssText = "height: 50px; width: 80px; border: pink solid 3px; background: salmon; color: white;";
+resetButton.addEventListener('click', () => {gridContainer.remove()})
+body.appendChild(resetButton)

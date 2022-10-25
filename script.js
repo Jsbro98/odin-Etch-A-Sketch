@@ -3,10 +3,16 @@ gridContainer.classList.add("grid-container");
 const gridWrapper = document.querySelector('.grid-wrapper');
 const inputButtonContainer = document.querySelector('.input-button-container');
 
+let mouseDown = 0;
+
+document.body.onmousedown = function() {mouseDown++};
+document.body.onmouseup = function() {mouseDown--};
+
 
 const createGrid = (columns, rows, color) => {    
     gridWrapper.appendChild(gridContainer)
-    if(columns > 36 || rows > 50) {
+
+    if (columns > 28 || rows > 50) {
         return alert("Error, please choose a smaller grid")
     }
     for (i = 0; i < columns; i++) {
@@ -22,8 +28,10 @@ const createGrid = (columns, rows, color) => {
             divColumn.appendChild(div);
             const cell = document.querySelector(`#cell-${i}-${j}`);
             cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = `${color}`});
-        }
+            cell.addEventListener('mouseover', (e) => { if (mouseDown) {e.target.style.backgroundColor = 'white'}});
+            
     }
+}
 }
 const resetAll = (e) => {
     const columns = document.querySelectorAll('[id*="column"]');

@@ -9,8 +9,9 @@ document.body.onmousedown = function() {mouseDown = 1};
 document.body.onmouseup = function() {mouseDown = 0};
 
 
-const createGrid = (columns, rows, color) => {    
+const createGrid = (columns, rows) => {    
     gridWrapper.appendChild(gridContainer)
+    const colorInput = document.querySelector('.color-input');
 
     if (columns > 28 || rows > 50) {
         return alert("Error, please choose a smaller grid")
@@ -27,7 +28,7 @@ const createGrid = (columns, rows, color) => {
             div.setAttribute('id', `cell-${i}-${j}`);
             divColumn.appendChild(div);
             const cell = document.querySelector(`#cell-${i}-${j}`);
-            cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = `${color}`});
+            cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = `${colorInput.value}`});
             cell.addEventListener('mouseover', (e) => { if (mouseDown) {e.target.style.backgroundColor = 'white'}});
             
     };
@@ -54,22 +55,19 @@ inputButtonContainer.appendChild(resetButton);
 const readAndCreateFromUserInput = () => {
 let rowValue;
 let columnValue;
-let colorValue;
 
     (function readUserInput() {
         const rowInput = document.querySelector('.rows-input');
         const columnInput = document.querySelector('.columns-input');
-        const colorInput = document.querySelector('.color-input');
         
-        colorValue = colorInput.value;
         rowValue = rowInput.value;
         columnValue = columnInput.value;
-        return rowValue, columnValue, colorValue;
+        return rowValue, columnValue;
     }) ();
 
     resetAll();
 
-    createGrid(columnValue, rowValue, colorValue);
+    createGrid(columnValue, rowValue);
 };
 
 const submit = document.getElementById("submit");

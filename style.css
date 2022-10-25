@@ -2,6 +2,11 @@ html {
     background: rgb(222, 220, 220);
 }
 
+.grid-button-wrapper {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
 .input-button-container {
     display: block;
     justify-content: space-around;
@@ -34,6 +39,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: flex-start;
 }
 #submit:hover {background: rgb(189, 0, 0);}
 #submit {

@@ -5,8 +5,8 @@ const inputButtonContainer = document.querySelector('.input-button-container');
 
 let mouseDown = 0;
 
-document.body.onmousedown = function() {mouseDown++};
-document.body.onmouseup = function() {mouseDown--};
+document.body.onmousedown = function() {mouseDown = 1};
+document.body.onmouseup = function() {mouseDown = 0};
 
 
 const createGrid = (columns, rows, color) => {    
@@ -14,7 +14,7 @@ const createGrid = (columns, rows, color) => {
 
     if (columns > 28 || rows > 50) {
         return alert("Error, please choose a smaller grid")
-    }
+    };
     for (i = 0; i < columns; i++) {
         const div = document.createElement('div');
         div.style.cssText = "height: 50px; width: 50px; display: inline-block;";
@@ -30,9 +30,9 @@ const createGrid = (columns, rows, color) => {
             cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = `${color}`});
             cell.addEventListener('mouseover', (e) => { if (mouseDown) {e.target.style.backgroundColor = 'white'}});
             
-    }
-}
-}
+    };
+};
+};
 const resetAll = (e) => {
     const columns = document.querySelectorAll('[id*="column"]');
     const cells = document.querySelectorAll('[id*="cell"]');
@@ -42,7 +42,7 @@ const resetAll = (e) => {
     columns.forEach(index => index.remove());
     gridContainer.remove();
 
-}
+};
 
 
 const resetButton = document.createElement('button');
@@ -70,7 +70,7 @@ let colorValue;
     resetAll();
 
     createGrid(columnValue, rowValue, colorValue);
-}
+};
 
 const submit = document.getElementById("submit");
 submit.addEventListener('click', readAndCreateFromUserInput);

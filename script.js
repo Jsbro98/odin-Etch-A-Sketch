@@ -2,11 +2,34 @@ const  gridContainer = document.createElement('div');
 gridContainer.classList.add("grid-container");
 const gridWrapper = document.querySelector('.grid-wrapper');
 const inputButtonContainer = document.querySelector('.input-button-container');
+const eraserToggle = document.querySelector('.eraser-toggle');
 
 let mouseDown = 0;
+let mouseInGrid = false;
 
-document.body.onmousedown = function() {mouseDown = 1};
-document.body.onmouseup = function() {mouseDown = 0};
+const makeEraserInactive = function() {
+    mouseDown = 0;
+
+    eraserToggle.style.backgroundColor = "red";
+    eraserToggle.textContent = "Eraser Inactive";
+};
+
+const makeEraserActive = function() {
+    mouseDown = 1;
+
+    eraserToggle.style.backgroundColor = "green";
+    eraserToggle.textContent = "Eraser Active";
+};
+
+document.body.onmousedown = makeEraserActive
+document.body.onmouseup = makeEraserInactive
+
+gridWrapper.addEventListener('mouseenter', () => {mouseInGrid = true});
+gridWrapper.addEventListener('mouseleave', () => {
+    mouseInGrid = false; if (mouseDown === 1) {
+        makeEraserInactive();
+    };
+});
 
 
 const createGrid = (columns, rows) => {    
@@ -18,18 +41,23 @@ const createGrid = (columns, rows) => {
     };
     for (i = 0; i < columns; i++) {
         const div = document.createElement('div');
-        div.style.cssText = "height: 50px; width: 50px; display: inline-block;";
+        div.style.cssText = "height: 45px; width: 45px; display: inline-block;";
         div.setAttribute('id', `column-${i}`);
         gridContainer.appendChild(div);
         for (j = 0; j < rows; j++) {
             const divColumn = document.querySelector(`#column-${i}`);
             const div = document.createElement('div');
-            div.style.cssText = "height: 50px; width: 50px; background: white;";
+            if (j === rows - 1) {
+                div.style.cssText = "height: 45px; width: 45px; background: white; margin-bottom: 20px;";
+            } else {
+                div.style.cssText = "height: 45px; width: 45px; background: white;";
+            }
             div.setAttribute('id', `cell-${i}-${j}`);
             divColumn.appendChild(div);
             const cell = document.querySelector(`#cell-${i}-${j}`);
             cell.addEventListener('mouseover', (e) => {e.target.style.backgroundColor = `${colorInput.value}`});
             cell.addEventListener('mouseover', (e) => { if (mouseDown) {e.target.style.backgroundColor = 'white'}});
+            cell.addEventListener('ondragstart', () => {return false});
             
     };
 };

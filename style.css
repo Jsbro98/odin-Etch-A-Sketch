@@ -45,6 +45,8 @@ html {
     width: 20vw;
     background: rgba(255, 190, 68, 0.639);
     border: black solid 4px;
+    padding: 5px;
+    border-radius: 15px;
 }
 
 .grid-wrapper {
